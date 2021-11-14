@@ -8,14 +8,14 @@ import session6
 
 # check_ds
 
-def test_check_ds_wrong_input():
+def test_session6_check_ds_wrong_input():
     with pytest.raises(TypeError, match=r".*Input Function only*"):
         session6.check_ds('sac')
     with pytest.raises(TypeError, match=r".*Input Function only*"):
         session6.check_ds(1+2j)
 
 
-def test_check_ds_output():
+def test_session6_check_ds_output():
     def temp1():
         '''This docstring is less than 50 characters'''
         return "works"
@@ -30,7 +30,7 @@ def test_check_ds_output():
         temp2)() == "works", "check_ds is not working as expected"
 
 
-def test_check_ds_unwanted_args():
+def test_session6_check_ds_unwanted_args():
     def temp1():
         '''This docstring is less than 50 characters'''
         return "works"
@@ -46,14 +46,14 @@ def test_check_ds_unwanted_args():
 # next_fib
 
 
-def test_next_fib_wrong_input():
+def test_session6_next_fib_wrong_input():
     with pytest.raises(TypeError, match=r".*Enter an Integer*"):
         session6.next_fib('sac')
     with pytest.raises(TypeError, match=r".*Enter an Integer*"):
         session6.next_fib(1+2j)
 
 
-def test_next_fib_output():
+def test_session6_next_fib_output():
     assert session6.next_fib(
         13)() == 21, "next_fib function does not work as expected"
     assert session6.next_fib(14)(
@@ -62,14 +62,14 @@ def test_next_fib_output():
 
 # new_fn_counter
 
-def test_new_fn_counter_wrong_input():
+def test_session6_new_fn_counter_wrong_input():
     with pytest.raises(TypeError, match=r".*Input Function only*"):
         session6.new_fn_counter('sac')
     with pytest.raises(TypeError, match=r".*Input Function only*"):
         session6.new_fn_counter(1+2j)
 
 
-def test_new_fn_counter_output():
+def test_session6_new_fn_counter_output():
     session6.d = {"add": 0, "mul": 0, "div": 0}
     temp_add = session6.new_fn_counter(session6.add)
     temp_mul = session6.new_fn_counter(session6.mul)
@@ -85,19 +85,19 @@ def test_new_fn_counter_output():
     assert session6.d["div"] == 3, "new_fn_counter does not work as expected"
 
 
-def test_new_fn_counter_unwanted_args():
+def test_session6_new_fn_counter_unwanted_args():
     with pytest.raises(ValueError, match=r".*Unwanted Arguments given*"):
         session6.new_fn_counter(session6.add, session6.mul)(1, 2)
 
 
-def test_new_fn_counter_wrong_fn():
+def test_session6_new_fn_counter_wrong_fn():
     def r():
         return None
     with pytest.raises(ValueError, match=r".*Function not in dictionary*"):
         session6.new_fn_counter(r)()
 
 
-def test_new_fn_counter_wrong_dict():
+def test_session6_new_fn_counter_wrong_dict():
     session6.d = {"add": -2, "mul": 0, "div": 0}
     with pytest.raises(Warning, match=r".*Count should not be negative*"):
         session6.new_fn_counter(session6.add)(1,2)
@@ -106,14 +106,14 @@ def test_new_fn_counter_wrong_dict():
 # mod_new_fn_counter
 
 
-def test_mod_new_fn_counter_wrong_input():
+def test_session6_mod_new_fn_counter_wrong_input():
     with pytest.raises(TypeError, match=r".*Input Function and Dictionary only*"):
         session6.mod_new_fn_counter('sac', 1+2j)
     with pytest.raises(TypeError, match=r".*Input Function and Dictionary only*"):
         session6.mod_new_fn_counter(1+2j, 'sac')
 
 
-def test_mod_new_fn_counter_output():
+def test_session6_mod_new_fn_counter_output():
     session6.d1 = {"add": 1, "mul": 3, "div": 4}
     temp1 = session6.mod_new_fn_counter(session6.add, session6.d1)
     temp2 = session6.mod_new_fn_counter(session6.mul, session6.d1)
@@ -127,19 +127,19 @@ def test_mod_new_fn_counter_output():
     assert session6.d1["div"] == 5, "mod_new_fn_counter does not work as expected"
 
 
-def test_mod_new_fn_counter_unwanted_args():
+def test_session6_mod_new_fn_counter_unwanted_args():
     with pytest.raises(ValueError, match=r".*Unwanted Arguments given*"):
         session6.mod_new_fn_counter(session6.add, session6.d, 1+2j)(1, 2)
 
 
-def test_mod_new_fn_counter_wrong_fn():
+def test_session6_mod_new_fn_counter_wrong_fn():
     def r():
         return None
     with pytest.raises(ValueError, match=r".*Function not in dictionary*"):
         session6.mod_new_fn_counter(r, session6.d1)()
 
 
-def test_mod_new_fn_counter_wrong_dict():
+def test_session6_mod_new_fn_counter_wrong_dict():
     session6.d1 = {"add": -2, "mul": 0, "div": 0}
     with pytest.raises(Warning, match=r".*Count should not be negative*"):
         session6.mod_new_fn_counter(session6.add,session6.d1)(1, 2)
